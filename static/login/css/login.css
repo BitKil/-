@@ -1,0 +1,78 @@
+	/*html{
+		width: 100%;
+		height: 100%;
+	}*/
+	body{
+		/*width: 100%;
+		height: 100%;*/
+		overflow-x:auto;
+		overflow-y: hidden;
+	}
+	.container{
+		position: relative;
+	}
+	.header{
+		max-width: 1000px;
+		margin: 0 auto;
+		margin-top: 20px;
+	}
+	.container{
+		min-width: 1440px;
+		margin-top: 30px;
+	}
+	.login-panel{
+		position: absolute;
+		top:80px;
+		left: 65%;
+		width:350px;
+		height:350px;
+		background:rgba(201,231,247,0.5);
+	}
+	.login-panel-bg{
+		margin-left: 15px;
+		margin-top: 15px;
+		width:320px;
+		height:320px;
+		background-color: white;
+	}
+	.login-panel-content{
+		position: relative;
+	}
+	.login-panel-content-item{
+		text-align: center;
+	}
+	.input-control{
+		margin:15px;
+	}
+	.input-control input { text-indent: 20px; }
+	.navbar-inner{
+		margin-top:10px;
+		text-align: center;
+	}
+	.navbar-inner h5{
+		font-weight: normal;
+	}
+	.submit{
+		margin-top: 10px;
+	}
+	.submit a{
+		text-decoration: none;
+		outline: none;
+	}
+	.submit label{
+		margin: 1px;
+	}
+	#canvas{
+		position: absolute;
+		top:0px;
+		left: 120px;
+        cursor:pointer;
+    }
+    .sui-form .input-control input:focus~.sui-icon{
+    	display: unset;
+    }
+	.message_flash{
+		margin-top: 0px;
+		margin-bottom: 0px;
+		color: red;
+	}

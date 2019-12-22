@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <link type="text/css" href="../static/index/css/index.css" rel="stylesheet">
+    <script type="text/javascript" src="../static/index/js/jquery.js"></script>
+
+     <!--响应式框架-->
+    <link rel="stylesheet" type="text/css" href="../static/information/css/bootstrap-grid.min.css" />
+
+    <!--图标样式-->
+    <link href="../static/information/css/font-awesome.min.css" rel="stylesheet">
+
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>主页</title>
+</head>
+<header>
+    <div class="header_resize">
+      <div class="logo">
+      	<h1><a href="#">Welcome 最潮的球鞋平台</a></h1>
+      </div>
+       <!--导航-->
+      <nav>
+        <ul>
+          <li class="active"><a href="index.html" ><b>主页</b></a></li>
+          <li class="active"><a href="information.html">球鞋咨询</a></li>
+          <li><a href="#">球鞋鉴定</a></li>
+          <li><a href="#">球鞋论坛</a></li>
+          <li><a href="#">关于我们</a></li>
+        </ul>
+      </nav>
+       <!--导航结束-->
+    </div>
+  </header>
+  <!--头部区结束-->
+<body>
+
+    <div class="box">
+        <div class="box_img">
+            <ul>
+                <li><img src="../static/index/images/show1.JPG"></li>
+                <li><img src="../static/index/images/show2.JPG"></li>
+                <li><img src="../static/index/images/show3.JPG"></li>
+                <li><img src="../static/index/images/show4.JPG"></li>
+                <li><img src="../static/index/images/show5.JPG"></li>
+                <li><img src="../static/index/images/show6.JPG"></li>
+                <li><img src="../static/index/images/show7.JPG"></li>
+                <li><img src="../static/index/images/show8.JPG"></li>
+                <li><img src="../static/index/images/show9.JPG"></li>
+                <li><img src="../static/index/images/show10.JPG"></li>
+
+            </ul>
+        </div>
+        <div class="box_tab"></div>
+    </div>
+
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+            var timejg=2000;//轮播间隔时间
+            var size = $('.box_img ul li').size();
+            for(var i=1;i<=size;i++){
+                $('.box_tab').append('<a href="javascript:(void)">'+i+'</a>')
+            }
+
+            $('.box_img ul li').eq(0).show();
+            $('.box_tab a').eq(0).addClass('active')
+            $('.box_tab a').mouseover(function(){
+                $(this).addClass('active').siblings().removeClass('active');
+                var index = $(this).index();
+                i=index;
+                $('.box_img ul li').eq(index).stop().fadeIn(300).siblings().stop().fadeOut(300);
+            });
+
+            var i = 0;
+            var time = setInterval(move,timejg);
+
+            function move(){
+                i++;
+                if(i==size){
+                    i=0;
+                }
+
+                $('.box_tab a').eq(i).addClass('active').siblings().removeClass('active');
+                $('.box_img ul li').eq(i).fadeIn(300).siblings().fadeOut(300);
+            }
+
+            $('.box').hover(function(){
+                clearInterval(time);
+            },function(){
+                time = setInterval(move,timejg);
+            });
+        });
+    </script>
+    </div>
+
+
+</body>
+</html>

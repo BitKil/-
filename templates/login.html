@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>球鞋交流平台</title>
+	<link href="http://g.alicdn.com/sj/dpl/1.5.1/css/sui.min.css" rel="stylesheet">
+	<link href="http://g.alicdn.com/sj/dpl/1.5.1/css/sui-append.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="/static/login/css/login.css">
+	<script type="text/javascript" src="http://g.alicdn.com/sj/lib/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="http://g.alicdn.com/sj/dpl/1.5.1/js/sui.min.js"></script>
+</head>
+<body>
+	<div class="header">
+		<img src="/static/login/img/logo.png" alt="logo">
+	</div>
+	<div class="container">
+            <meta name="viewport" content="width=device-width,initial-scale=1" />
+		<img src="/static/login/img/bg.jpg" alt="background" style="width: 100%">
+		<div class="login-panel">
+			<div class="login-panel-bg">
+				<div class="login-panel-content">
+					<div class="login-panel-content-item">
+						<br>
+						<h2 class="sui-text-info">用户登录</h2>
+
+						<form id="login" class="sui-form" action="http://localhost:5000/login" method="post" accept-charset="utf-8">
+							<div class="input-control">
+								<input type="text" id="userID" name="id" placeholder="请输入账号" class="input-large input-fat"><i class="sui-icon icon-touch-user3-sign"></i>
+							</div>
+							<div class="input-control">
+								<input type="password" id="userPWD" name="pwd" placeholder="请输入密码" class="input-large input-fat"><i class="sui-icon icon-touch-briefcase-sign"></i>
+							</div>
+
+							<div class="input-control">
+								<input type="text" id="pin" name="pin" placeholder="请输入验证码" class="input-large input-fat"><i class="sui-icon icon-touch-key"></i>
+								<canvas id="canvas" width="80px" height="28px" onclick="drawPic()"></canvas>
+							</div>
+							<div class="submit">
+								<button type="submit"id="loginBtn" class="sui-btn btn-primary"><span style="font-size: 14px">登录</span></button>
+                                <button id="registerBtn" class="sui-btn btn-primary" type="button" onclick="window.location.href='/register.html'"><span style="font-size: 14px">注册</span></button>
+								<label data-toggle="checkbox" id="remember" class="checkbox-pretty inline">
+								<input type="checkbox" name = "remember" value="1"><span>记住登录名</span>
+								</label>
+								<label>
+									<a onclick="window.location.href='/reNewPwd.html'" title="点击找回">忘记密码？</a>
+								</label>
+							</div>
+
+                               <!--通知消息处-->
+                            <div >
+                                {% if get_flashed_messages() %}
+                                    <p class = "message_flash" >{{ get_flashed_messages()[0] }}</p>
+                                {% endif %}
+                            </div>
+						</form>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{#	<div class="sui-navbar navbar-fixed-bottom">#}
+{#		<div class="navbar-inner">#}
+{#			<h5><strong>Copyright &copy; 2019 WEB.</strong> All Rights Reserved.</h5>#}
+{#		</div>#}
+{#	</div>#}
+	<script type="text/javascript" src="/static/login/js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="/static/login/js/drawPic.js"></script>
+    <script>
+        let myVar = drawPic()
+            $.post('http://localhost:5000/login', {myVar}, function(){})
+    </script>
+{#	<script type="text/javascript" src="/static/login/js/login.js"></script>#}
+</body>
+</html>
