@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link type="text/css" href="../../../static/information/css/information.css" rel="stylesheet">
+    <script type="text/javascript" src="../../../static/information/js/jquery.js"></script>
+{#    <script type="text/javascript" src="../../static/information/js/"></script>#}
+
+    <!--响应式框架-->
+    <link rel="stylesheet" type="text/css" href="../../../static/information/css/bootstrap-grid.min.css" />
+
+    <!--图标样式-->
+
+
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>主页</title>
+</head>
+{% include 'part/header.html' %}
+
+
+<body>
+<h2>球鞋论坛秩序要靠大家一起维护</h2>
+    <a href="/forum/add">
+        <button class="forumAddButton" >发布帖子</button>
+    </a>
+<hr>
+    {% for r in items %}
+
+        <div>
+             <div class="topic_title_wrapper" style="float: left">
+                    <span><b>帖子主题：</b></span>
+                    <a class="topic_title" href="{{ url_for('toPost', id=r[0]) }}"
+                       title="{{ r[1] }}">
+                        {{ r[1] }}
+                    </a>
+             </div>
+            <br>
+            <div class="cell">
+                <span class="reply_count pull-left">
+                     <span><b>回帖数</b></span>
+                    <span class="count_of_replies" title="回复数">
+                        {{ r[6] }}
+                    </span>
+                    <span class="count_seperator">/</span>
+                    <span><b>点击数</b></span>
+                    <span class="count_of_visits" title="点击数">
+                        {{ r[5] }}
+                    </span>
+                </span>
+
+    {#            {% if not r.no_replies() %}#}
+    {#                    <span class="last_active_time">21 分钟前</span>#}
+    {#            {% endif %}#}
+
+                <br>
+                <span><b>更新时间</b></span>
+                <span>{{ r[4] }}</span>
+
+           <hr >
+            </div>
+        </div>
+    {% endfor %}
+</body>
+</html>

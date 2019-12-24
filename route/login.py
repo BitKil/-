@@ -20,19 +20,18 @@ def logIn(app):
             flag = 0  # 判断数据库里是否存在账号
             for item in info:
                 if item[0] == user_info.get("id"):  # 验证账号是否存在数据库中
-                    if check_password_hash(item[1],user_info.get("pwd")) and user_info.get("pin") == '1':  # 密码验证码匹配成功
+                    if check_password_hash(item[1],user_info.get("pwd")) and user_info.get("pin") == '8425':  # 密码验证码匹配成功
                         resp = make_response(render_template('index.html'))
                         resp.set_cookie('user_id', user_info.get("id"))
                         flag = 1
-                        print(item[0])
                         if request.form.get("remember") is None:  # 没有记住账号
-                            print(222222)
-                            pass
+                            session.permanent = True
+                            session['user_id'] = user_info.get("id")
                         else:  # 记住密码
                             # 将账号保存到cookie中
                             session.permanent = True
                             session['user_id'] = user_info.get("id")
-                            print(3333333)
+                        print(session.get('user_id'))
                         return render_template('index.html')
                     else:
                         flag = 1

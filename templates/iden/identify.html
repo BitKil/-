@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link type="text/css" href="../static/index/css/index.css" rel="stylesheet">
+    <script type="text/javascript" src="../static/index/js/jquery.js"></script>
+     <!--响应式框架-->
+    <link rel="stylesheet" type="text/css" href="../static/information/css/bootstrap-grid.min.css" />
+    <!--图标样式-->
+    <link href="../static/information/css/font-awesome.min.css" rel="stylesheet">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <title>球鞋鉴定</title>
+</head>
+<header>
+    <div class="header_resize">
+      <div class="logo">
+      	<h1><a href="#">Welcome 最潮的球鞋平台</a></h1>
+      </div>
+       <!--导航-->
+      <nav>
+        <ul>
+          <li class="active"><a href="index.html" ><b>主页</b></a></li>
+          <li class="active"><a href="information.html">球鞋咨询</a></li>
+          <li class="active" ><a href="identify.html">球鞋鉴定</a></li>
+          <li><a class="active" href="forum.html">球鞋论坛</a></li>
+          <li><a class="active" href="aboutUs.html">关于我们</a></li>
+        </ul>
+      </nav>
+       <!--导航结束-->
+    </div>
+  </header>
+  <!--头部区结束-->
+<body>
+    <button onclick="window.location.href='i1.html'">我要鉴定</button>
+    <button onclick="window.location.href='i2.html'">我要成为鉴定师</button>
+       <!--通知消息处-->
+    <div style="padding-left: 200px">
+        {% if get_flashed_messages() %}
+            <p style="font-size: large" class = "message_flash" >{{ get_flashed_messages()[0] }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>

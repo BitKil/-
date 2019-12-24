@@ -27,18 +27,25 @@ def register(app,mail,redis_store):
             except Exception as e:
                 current_app.logger.debug(e)
                 return jsonify(re_code="1", msg='查询邮箱验证码失败')
-            if (code == mailcode_server):
-                if (password == password_again):
-                    password_hash = generate_password_hash(password)
-                    sqlstr = "insert into user values('%s','%s','%s')" % (username, password_hash, email)
-                    cursor.execute(sqlstr)
-                    conn.commit()
-                    flash("注册成功")
-                    return redirect(url_for('toLogin'))
+
+            # 判断id有没有被注册
+            strsql = "select * from user where user_id=" + username
+            cursor.execute(strsql);
+            count = cursor.fetchall().count();
+            app.logger.debug(count)
+            if (count == 0):
+                if (code == mailcode_server):
+                    if (password == password_again):
+                        password_hash = generate_password_hash(password)
+                        sqlstr = "insert into user values('%s','%s','%s')" % (username, password_hash, email)
+                        cursor.execute(sqlstr)
+                        conn.commit()
+                        flash("注册成功")
+                        return redirect(url_for('toLogin'))
+                    else:
+                        flash("两次密码")
                 else:
-                    flash("两次密码")
-            else:
-                flash("验证码错误！")
+                    flash("验证码错误！")
         return render_template('register.html')
 
     @app.route('/register/sendmail', methods=['POST'])
@@ -81,7 +88,7 @@ def register(app,mail,redis_store):
             亲爱的,
         </h1>
         <h3>
-            欢迎来到 <b>Flask-Test-Project</b>!
+            欢迎来到 <b>球鞋资讯平台</b>!
         </h3>
         <p>
             您的验证码为 &nbsp;&nbsp; <b>{mailcode}</b> &nbsp;&nbsp; 赶快去完善注册信息吧！！！

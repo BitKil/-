@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <link type="text/css" href="../../static/information/css/search.css" rel="stylesheet">
+     <script type="text/javascript" src="../../static/information/js/jquery.js"></script>
+    <meta charset="UTF-8">
+    <title>待鉴定区域</title>
+       <script type="text/javascript">
+        //这是要增长的变量
+        var varible1z = 0;
+        var varible1j = 0;
+        var varible2z = 0;
+        var varible2j = 0;
+        var varible3z = 0;
+        var varible3j = 0;
+        //增1的函数
+        function add1z() {
+            varible1z++;
+            console.log(1)
+             document.getElementById("az").innerHTML=varible1z;
+        }
+        function add1j()
+        {
+            varible1j++;
+             document.getElementById("aj").innerHTML=varible1j
+        }
+        function add2z() {
+            varible2z++;
+             document.getElementById("bz").innerHTML=varible2z
+        }
+        function add2j()
+        {
+            varible2j++;
+             document.getElementById("bj").innerHTML=varible2j
+        }
+        function add3z()
+        {
+            varible3z++;
+             document.getElementById("cz").innerHTML=varible3z
+        }
+        function add3j()
+        {
+            varible3j++;
+             document.getElementById("cj").innerHTML=varible3j
+        }
+    </script>
+</head>
+{% include 'part/header.html' %}
+<body>
+    <ul>
+        <li>
+            <img class="pic-1" src="../static/indentifyShoe/shoe1.png" width="300px" height="200px">
+            <button id="fake" class="sui-btn btn-primary" type="button" onclick=add1j()><span style="font-size: 14px">这是假鞋</span></button>
+            <button id="real" class="sui-btn btn-primary" type="button" onclick=add1z()><span style="font-size: 14px">这是真鞋</span></button>
+            <h1>真：<h1 id="az">0</h1></h1>
+            <h1>假: <h1 id="aj">0</h1></h1>
+        </li>
+        <li>
+            <img class="pic-1" src="../static/indentifyShoe/shoe2.png" width="300px" height="200px">
+            <button id="fake" class="sui-btn btn-primary" type="button" onclick=add2j()><span style="font-size: 14px">这是假鞋</span></button>
+            <button id="real" class="sui-btn btn-primary" type="button" onclick=add2z()><span style="font-size: 14px">这是真鞋</span></button>
+            <h1>真：<h1 id="bz">0</h1></h1>
+            <h1>假: <h1 id="bj">0</h1></h1>
+        </li><li>
+            <img class="pic-1" src="../static/indentifyShoe/shoe3.png" width="300px" height="200px">
+            <button id="fake" class="sui-btn btn-primary" type="button" onclick=add3j()><span style="font-size: 14px">这是假鞋</span></button>
+            <button id="real" class="sui-btn btn-primary" type="button" onclick=add3z()><span style="font-size: 14px">这是真鞋</span></button>
+            <h1>真：<h1 id="cz">0</h1></h1>
+            <h1>假: <h1 id="cj">0</h1></h1>
+        </li>
+
+    </ul>
+</body>
+</html>

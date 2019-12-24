@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <link rel="stylesheet" type="text/css" href="../../static/forum/css/post.css" />
+      <link rel="stylesheet" type="text/css" href="../../static/information/css/bootstrap-grid.min.css" />
+
+    <!--图标样式-->
+    <link href="../../static/information/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../static/forum/css/style.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>title</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <p><b>帖子主题：</b></p><span class="post_title">{{ info[1] }}</span>
+        </header>
+        <main>
+            <nav>
+               <p><b>楼主id:</b></p><span class="post_id">{{ info[3] }}</span>
+            </nav>
+
+            <section>
+               <span><b>帖子内容:</b></span><span class="post_content">{{ info[2] }}</span>
+            </section>
+
+        </main>
+        <footer>
+           <span><b>发帖时间：</b></span><span class="post_time">{{ info[4] }}</span>
+        </footer>
+    </div>
+
+
+{% for i in items %}
+    <div class="reply">
+        <div class="container">
+            <main>
+                <nav>
+                   <p><b>回帖者id:</b></p> <span class="reply_id">{{ i[2] }}</span>
+                </nav>
+
+                <section>
+                    <p><b>回帖内容:</b></p><span class="reply_content">{{ i[1] }}</span>
+                </section>
+
+            </main>
+            <footer>
+               <span><b>发帖时间：</b></span><span class="reply_time">{{ i[4] }}</span>
+            </footer>
+        </div>
+    </div>
+{% endfor %}
+<br><br>
+<form action="" method="post">
+
+{#!!!!!!!!!!!回帖的输入框是按照发帖的输入框来修改的，可能class会重复，按照需求改class!!!!!!!!!#}
+        <div class="form-group">
+
+            <span for="add-forum-replytext">回帖内容</span>
+            <textarea class="form-field" type="text" name="add-forum-replytext" placeholder="内容" id="add-forum-replytext" style="height: 100px; width: 1000px;"></textarea>
+        </div>
+
+         <div class="form-group">
+             <button type="submit" class="btn" class="send_btn" >回帖</button>
+        </div>
+</form>
+    <div>
+        {% if get_flashed_messages() %}
+            <p class = "message_flash" >{{ get_flashed_messages()[0] }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>

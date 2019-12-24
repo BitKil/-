@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link type="text/css" href="../../static/information/css/search.css" rel="stylesheet">
+     <script type="text/javascript" src="../../static/information/js/jquery.js"></script>
+
+
+    <meta charset="UTF-8">
+    <title>搜索结果</title>
+</head>
+
+
+
+{% include 'part/header.html' %}
+<body>
+    <ul style="float:left; list-style:none" class="image_sql">
+         {% for n in name %}  {# 迭代 movies 变量 #}
+        <li><img class="pic-1" src="../static/information/images/{{n}}" width="300px" height="200px"></li>  {# 等同于 movie['title'] #}
+        {% endfor %}  {# 使用 endfor 标签结束 for 语句 #}
+    </ul>
+     <ul style="float: left ; list-style:none " class="title_sql">
+         {% for n in shoe %}  {# 迭代 movies 变量 #}
+        <li><p style="height: 200px; width: 500px; text-align:center;color:black;font-size:30px;" >{{n}}</p></li>  {# 等同于 movie['title'] #}
+        {% endfor %}  {# 使用 endfor 标签结束 for 语句 #}
+    </ul>
+    <ul style="float: left ; list-style:none " class="title_sql">
+         {% for n in info %}  {# 迭代 movies 变量 #}
+        <li><p style="height: 200px;  text-align:left;color:#123456;font-size:30px;" >{{n}}</p></li>  {# 等同于 movie['title'] #}
+        {% endfor %}  {# 使用 endfor 标签结束 for 语句 #}
+    </ul>
+</body>
+</html>
